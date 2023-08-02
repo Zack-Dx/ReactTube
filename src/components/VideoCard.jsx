@@ -1,7 +1,3 @@
 export default function VideoCard() {
-    return (
-        <div>
-            VideoCard
-        </div>
-    );
+  return <div>VideoCard</div>;
 }

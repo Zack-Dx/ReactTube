@@ -1,11 +1,13 @@
-import Sidebar from './Sidebar';
-import MainContainer from './MainContainer';
+import Sidebar from "./Sidebar";
+import MainContainer from "./MainContainer";
 
 export default function Body() {
-    return (
-        <>
-            <Sidebar />
-            <MainContainer />
-        </>
-    );
+  return (
+    <>
+      <main className="flex fixed top-16 w-full">
+        <Sidebar />
+        <MainContainer />
+      </main>
+    </>
+  );
 }
