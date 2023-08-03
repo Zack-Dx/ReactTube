@@ -20,12 +20,12 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleSidebarDisplay}
-            className="p-2 transition rounded-full hover:bg-gray-200"
+            className="p-2 outline-none transition rounded-full hover:bg-gray-200"
           >
             <RxHamburgerMenu className="text-xl" />
           </button>
           {/* Logo */}
-          <div className="px-2">
+          <div className="px-2 animate-pulse">
             <img
               className="block"
               width={100}

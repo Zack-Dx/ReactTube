@@ -1,11 +1,13 @@
 import FilterList from "./FilterList";
-import VideoCard from "./VideoCard";
+import VideoSection from "./VideoSection";
 
 export default function MainContainer() {
   return (
-    <div>
-      <FilterList />
-      <VideoCard />
-    </div>
+    <>
+      <section className="w-screen">
+        <FilterList />
+        <VideoSection />
+      </section>
+    </>
   );
 }
