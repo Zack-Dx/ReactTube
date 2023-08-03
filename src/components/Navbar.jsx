@@ -14,8 +14,8 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 w-full z-50 shadow-md">
-      <nav className="flex justify-between px-6 py-2.5">
-        <div id="start" className="flex items-center">
+      <nav className="flex justify-between px-6 py-2">
+        <div id="start" className="flex items-center space-x-3">
           {/* Hamburger */}
           <button
             type="button"
@@ -25,10 +25,10 @@ export default function Navbar() {
             <RxHamburgerMenu className="text-xl" />
           </button>
           {/* Logo */}
-          <div className="px-2 animate-pulse">
+          <div className="animate-pulse">
             <img
               className="block"
-              width={100}
+              width={90}
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
               alt="youtube_logo"
             />

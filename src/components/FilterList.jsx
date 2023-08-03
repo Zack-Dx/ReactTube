@@ -11,11 +11,11 @@ export default function FilterList() {
     "Game Shows",
     "Driving",
     "Coding",
-    "bigboss",
+    "Bigboss",
   ];
   return (
     <>
-      <section className="flex gap-3 mx-2 my-5 overflow-x-scroll scrollbar-hide pr-10 w-auto">
+      <section className="flex gap-3 my-5 overflow-x-scroll scrollbar-hide pr-3">
         {buttonContentArray?.map((textContent, index) => (
           <Button key={index} textContent={textContent} />
         ))}

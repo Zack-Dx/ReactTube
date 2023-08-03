@@ -19,19 +19,19 @@ export default function Sidebar() {
   ];
 
   return isSidebarOpen ? (
-    <div className="sticky h-screen py-3 overflow-y-scroll scrollbar-hide">
-      {sidebarData?.map(({ icon, text }) => (
+    <div className="col-span-4 md:col-span-2 sticky h-screen py-3 overflow-y-scroll scrollbar-hide">
+      {sidebarData?.map(({ icon, text: textContent }) => (
         <div
-          key={text}
-          className="flex items-center justify-start mx-4 rounded-md py-3 px-3 cursor-pointer"
+          key={textContent}
+          className="flex  items-center justify-start mx-4 rounded-md py-3 px-3 cursor-pointer"
         >
           <div className="text-xl mr-5">{icon}</div>
-          <div className="text-sm font-normal">{text}</div>
+          <div className="text-sm font-normal">{textContent}</div>
         </div>
       ))}
     </div>
   ) : (
-    <div className="flex flex-col p-2 cursor-pointer sticky h-screen">
+    <div className="col-span-2 md:col-span-1 flex flex-col p-2 cursor-pointer sticky h-screen">
       {sidebarData?.map(({ text, icon }) => {
         return (
           <div
