@@ -2,7 +2,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { BiSearch, BiSolidMicrophone } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { toggleSideBarDisplay } from "../utils/appSlice";
+import { toggleSideBarDisplay } from "../store/slices/appSlice";
 
 export default function Navbar() {
   const dispatch = useDispatch();

@@ -1,8 +1,8 @@
 import "./App.css";
 import { Provider } from "react-redux";
-import store from "./utils/store";
-import Navbar from "./components/Navbar";
-import Body from "./components/Body";
+import store from "./store/store";
+import Navbar from "./layout/Navbar";
+import Body from "./layout/Body";
 
 export default function App() {
   return (

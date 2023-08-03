@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-import MainContainer from "./MainContainer";
+import MainContainer from "../components/MainContainer";
 
 export default function Body() {
   return (

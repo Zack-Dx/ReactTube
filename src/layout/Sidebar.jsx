@@ -1,26 +1,27 @@
+import { useSelector } from "react-redux/es/hooks/useSelector";
 import { GoHomeFill } from "react-icons/go";
 import { MdOutlineAppShortcut, MdSubscriptions } from "react-icons/md";
-import { useSelector } from "react-redux/es/hooks/useSelector";
+const sidebarData = [
+  {
+    text: "Home",
+    icon: <GoHomeFill />,
+  },
+  {
+    text: "Shorts",
+    icon: <MdOutlineAppShortcut />,
+  },
+  {
+    text: "Subscriptions",
+    icon: <MdSubscriptions />,
+  },
+];
+
 export default function Sidebar() {
   const isSidebarOpen = useSelector((state) => state.app.isSideBarVisible);
-  const sidebarData = [
-    {
-      text: "Home",
-      icon: <GoHomeFill />,
-    },
-    {
-      text: "Shorts",
-      icon: <MdOutlineAppShortcut />,
-    },
-    {
-      text: "Subscriptions",
-      icon: <MdSubscriptions />,
-    },
-  ];
 
   return isSidebarOpen ? (
     <div className="col-span-4 md:col-span-2 sticky h-screen py-3 overflow-y-scroll scrollbar-hide">
-      {sidebarData?.map(({ icon, text: textContent }) => (
+      {sidebarData.map(({ icon, text: textContent }) => (
         <div
           key={textContent}
           className="flex  items-center justify-start mx-4 rounded-md py-3 px-3 cursor-pointer"
@@ -32,7 +33,7 @@ export default function Sidebar() {
     </div>
   ) : (
     <div className="col-span-2 md:col-span-1 flex flex-col p-2 cursor-pointer sticky h-screen">
-      {sidebarData?.map(({ text, icon }) => {
+      {sidebarData.map(({ text, icon }) => {
         return (
           <div
             key={text}
