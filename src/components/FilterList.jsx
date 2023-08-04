@@ -15,7 +15,7 @@ const buttonContentArray = [
 export default function FilterList() {
   return (
     <>
-      <section className="flex gap-3 my-5 overflow-x-scroll scrollbar-hide pr-3">
+      <section className="flex gap-3 my-5 overflow-x-auto scrollbar-hide">
         {buttonContentArray.map((textContent, index) => (
           <Button key={index} textContent={textContent} />
         ))}

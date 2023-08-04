@@ -20,7 +20,7 @@ export default function Sidebar() {
   const isSidebarOpen = useSelector((state) => state.app.isSideBarVisible);
 
   return isSidebarOpen ? (
-    <div className="col-span-4 md:col-span-2 sticky h-screen py-3 overflow-y-scroll scrollbar-hide">
+    <div className="col-span-4 md:col-span-2 h-screen py-3 overflow-y-auto scroll scrollbar-hide">
       {sidebarData.map(({ icon, text: textContent }) => (
         <div
           key={textContent}
@@ -32,7 +32,7 @@ export default function Sidebar() {
       ))}
     </div>
   ) : (
-    <div className="col-span-2 md:col-span-1 flex flex-col p-2 cursor-pointer sticky h-screen">
+    <div className="col-span-2 md:col-span-1 flex flex-col p-2 cursor-pointer h-screen overflow-y-auto scrollbar-hide">
       {sidebarData.map(({ text, icon }) => {
         return (
           <div

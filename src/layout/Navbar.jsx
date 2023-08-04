@@ -13,8 +13,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 w-full z-50 shadow-md">
-      <nav className="flex justify-between px-6 py-2">
+    <header>
+      <nav className="flex justify-between px-6 py-2 shadow-md">
         <div id="start" className="flex items-center space-x-3">
           {/* Hamburger */}
           <button
