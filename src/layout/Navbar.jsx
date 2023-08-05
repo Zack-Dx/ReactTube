@@ -25,7 +25,7 @@ export default function Navbar() {
             <RxHamburgerMenu className="text-xl" />
           </button>
           {/* Logo */}
-          <div className="animate-pulse">
+          <div>
             <img
               className="block"
               width={90}
