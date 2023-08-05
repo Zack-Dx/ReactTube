@@ -11,7 +11,7 @@ export default function MainContainer() {
           isSideBarOpen
             ? "col-span-8 md:col-span-10"
             : "col-span-10 md:col-span-11"
-        } px-2`}
+        }`}
       >
         <FilterList />
         <VideoSection />

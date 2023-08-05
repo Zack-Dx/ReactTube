@@ -29,9 +29,9 @@ export default function VideoSection() {
 
   return (
     <>
-      <section className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto">
-        {videos?.map((video, index) => (
-          <VideoPreviewCard key={index} />
+      <section className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto md:px-10 px-3">
+        {videos?.map((video) => (
+          <VideoPreviewCard key={video?.id} videoInfo={video} />
         ))}
       </section>
     </>
