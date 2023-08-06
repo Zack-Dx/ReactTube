@@ -9,8 +9,11 @@ const appSlice = createSlice({
     toggleSideBarDisplay: (state) => {
       state.isSideBarVisible = !state.isSideBarVisible;
     },
+    closeSideBarDisplay: (state) => {
+      state.isSideBarVisible = false;
+    },
   },
 });
 
-export const { toggleSideBarDisplay } = appSlice.actions;
+export const { toggleSideBarDisplay, closeSideBarDisplay } = appSlice.actions;
 export default appSlice.reducer;

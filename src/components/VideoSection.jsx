@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import fetchDataFromUrl from "../utils/fetch";
 import { YOUTUBE_VIDEO_API_ENDPOINT } from "../data/constants";
+import fetchDataFromUrl from "../utils/fetch";
 import VideoPreviewCard from "./VideoPreviewCard";
 import { VideoPreviewShimmer } from "./VideoPreviewShimmer";
 

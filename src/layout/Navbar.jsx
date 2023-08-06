@@ -3,6 +3,7 @@ import { BiSearch, BiSolidMicrophone } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toggleSideBarDisplay } from "../store/slices/appSlice";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const dispatch = useDispatch();
@@ -25,14 +26,14 @@ export default function Navbar() {
             <RxHamburgerMenu className="text-xl" />
           </button>
           {/* Logo */}
-          <div>
+          <Link to={"/"}>
             <img
               className="block"
               width={90}
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
               alt="youtube_logo"
             />
-          </div>
+          </Link>
         </div>
         <div id="center" className="flex items-center space-x-3 md:w-auto">
           <div className="flex items-center w-full md:w-80">

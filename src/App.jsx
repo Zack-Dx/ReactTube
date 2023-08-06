@@ -1,14 +1,13 @@
 import "./App.css";
 import { Provider } from "react-redux";
 import store from "./store/store";
-import Navbar from "./layout/Navbar";
-import Body from "./layout/Body";
+import { RouterProvider } from "react-router";
+import router from "./routing/route";
 
 export default function App() {
   return (
     <Provider store={store}>
-      <Navbar />
-      <Body />
+      <RouterProvider router={router} />
     </Provider>
   );
 }

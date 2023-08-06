@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 export default function VideoPreviewCard({ videoInfo }) {
   return (
     <>
-      <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer">
+      <Link
+        to={`/watch?v=${videoInfo?.id}}`}
+        className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer"
+      >
         <img
           className="rounded-xl hover:rounded-none duration-500 m-auto w-full"
           src={videoInfo?.snippet?.thumbnails?.medium?.url}
@@ -21,9 +25,9 @@ export default function VideoPreviewCard({ videoInfo }) {
             <h3 className="max-h-[53px]">
               {videoInfo?.snippet?.localized?.title?.slice(0, 55)}
             </h3>
-            <a className="text-slate-600 text-sm font-normal">
+            <p className="text-slate-600 text-sm font-normal">
               {videoInfo?.snippet?.channelTitle}
-            </a>
+            </p>
             <div className="text-slate-600 text-sm font-normal">
               <span>
                 {`${videoInfo?.statistics?.viewCount?.slice(0, 3)}`}K views
@@ -33,7 +37,7 @@ export default function VideoPreviewCard({ videoInfo }) {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }
