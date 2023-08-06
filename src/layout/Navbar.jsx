@@ -40,12 +40,12 @@ export default function Navbar() {
             <div className="hidden md:block border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
               <input
                 type="text"
-                className="outline-none w-full p-2"
+                className="outline-none w-full text-sm p-2"
                 placeholder="Search"
               />
             </div>
             {/* Search Button */}
-            <div className="bg-gray-100 py-[11px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none">
+            <div className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none">
               <BiSearch className="text-xl" />
             </div>
           </div>

@@ -1,11 +1,10 @@
 import PropTypes from "prop-types";
 export default function VideoPreviewCard({ videoInfo }) {
-  console.log(videoInfo);
   return (
     <>
-      <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 cursor-pointer">
+      <div className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer">
         <img
-          className="rounded-xl m-auto w-full"
+          className="rounded-xl hover:rounded-none duration-500 m-auto w-full"
           src={videoInfo?.snippet?.thumbnails?.medium?.url}
           alt={videoInfo?.snippet?.title}
         />
