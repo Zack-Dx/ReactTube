@@ -1,6 +1,11 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { substringText } from "../utils/textUtils";
 export default function VideoPreviewCard({ videoInfo }) {
+  if (!videoInfo) {
+    return null;
+  }
+
   return (
     <>
       <Link
@@ -23,14 +28,15 @@ export default function VideoPreviewCard({ videoInfo }) {
           </div>
           <div className="col-span-10 font-medium leading-6 overflow-hidden whitespace-normal">
             <h3 className="max-h-[53px]">
-              {videoInfo?.snippet?.localized?.title?.slice(0, 55)}
+              {substringText(0, 55, videoInfo?.snippet?.localized?.title)}
             </h3>
             <p className="text-slate-600 text-sm font-normal">
               {videoInfo?.snippet?.channelTitle}
             </p>
             <div className="text-slate-600 text-sm font-normal">
               <span>
-                {`${videoInfo?.statistics?.viewCount?.slice(0, 3)}`}K views
+                {`${substringText(0, 3, videoInfo?.statistics?.viewCount)}`}K
+                views
               </span>
               <span> &#x2022; </span>
               <span>2 months ago</span>
