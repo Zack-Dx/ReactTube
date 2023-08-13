@@ -2,6 +2,7 @@ import { useSelector } from "react-redux/es/hooks/useSelector";
 import { GoHomeFill } from "react-icons/go";
 import { MdOutlineAppShortcut, MdSubscriptions } from "react-icons/md";
 import { Link } from "react-router-dom";
+
 const sidebarData = [
   {
     text: "Home",

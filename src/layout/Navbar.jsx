@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import { YOUTUBE_SEARCH_API } from "../data/constants";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BiSearch, BiSolidMicrophone } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
@@ -6,12 +8,29 @@ import { toggleSideBarDisplay } from "../store/slices/appSlice";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useDispatch();
 
-  // Dispatching Action for Sidebar Toggle
   const toggleSidebarDisplay = () => {
     dispatch(toggleSideBarDisplay());
   };
+
+  async function getSearchSuggestions() {
+    try {
+      const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching search suggestions:", error);
+    }
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(getSearchSuggestions, 400);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [searchQuery]);
 
   return (
     <header>
@@ -43,6 +62,8 @@ export default function Navbar() {
                 type="text"
                 className="outline-none w-full text-sm p-2"
                 placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
             {/* Search Button */}

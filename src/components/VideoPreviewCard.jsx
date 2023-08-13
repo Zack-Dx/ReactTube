@@ -9,7 +9,7 @@ export default function VideoPreviewCard({ videoInfo }) {
   return (
     <>
       <Link
-        to={`/watch?v=${videoInfo?.id}}`}
+        to={`/watch?v=${videoInfo?.id}`}
         className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer"
       >
         <img
