@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../data/constants";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { BiSearch, BiSolidMicrophone } from "react-icons/bi";
+import { BiSearch } from "react-icons/bi";
+import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { toggleSideBarDisplay } from "../store/slices/appSlice";
@@ -9,24 +10,35 @@ import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchSuggestions, setSearchSuggestions] = useState([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+
   const dispatch = useDispatch();
 
   const toggleSidebarDisplay = () => {
     dispatch(toggleSideBarDisplay());
   };
 
+  const displaySuggestionPreview = (searchText) => {
+    searchText ? setShowSuggestions(true) : setShowSuggestions(false);
+  };
+
   async function getSearchSuggestions() {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
       const data = await response.json();
-      console.log(data);
+      setSearchSuggestions(data[1]);
     } catch (error) {
       console.error("Error fetching search suggestions:", error);
     }
   }
 
   useEffect(() => {
-    const timer = setTimeout(getSearchSuggestions, 400);
+    let timer;
+    if (searchQuery !== "") {
+      console.log("called");
+      timer = setTimeout(getSearchSuggestions, 400);
+    }
     return () => {
       clearTimeout(timer);
     };
@@ -54,16 +66,23 @@ export default function Navbar() {
             />
           </Link>
         </div>
-        <div id="center" className="flex items-center space-x-3 md:w-auto">
+        <div
+          id="center"
+          className="relative flex items-center space-x-3 md:w-auto"
+        >
           <div className="flex items-center w-full md:w-80">
             {/* Search Input */}
             <div className="hidden md:block border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
               <input
                 type="text"
-                className="outline-none w-full text-sm p-2"
+                className="outline-none w-96 text-sm p-2"
                 placeholder="Search"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  displaySuggestionPreview(e.target.value);
+                }}
+                onBlur={() => setShowSuggestions(false)}
               />
             </div>
             {/* Search Button */}
@@ -71,10 +90,25 @@ export default function Navbar() {
               <BiSearch className="text-xl" />
             </div>
           </div>
-          {/* Microphone */}
-          <div className="p-3 bg-slate-100 cursor-pointer rounded-full">
-            <BiSolidMicrophone className="text-xl" />
-          </div>
+
+          {/* Search Suggestions */}
+          {showSuggestions && (
+            <div className="absolute bg-white rounded-md w-[500px] h-96 overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
+              <ul>
+                {searchSuggestions?.map((query) => (
+                  <li
+                    key={query}
+                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    <div className="flex items-center gap-4">
+                      <BsSearch className="text-sm" />
+                      {query}
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div id="end" className="flex ml-2 items-center gap-3 md:gap-6">
           <AiOutlineUser className="text-2xl cursor-pointer" />
