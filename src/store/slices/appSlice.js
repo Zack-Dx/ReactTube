@@ -15,5 +15,5 @@ const appSlice = createSlice({
   },
 });
 
-export const { toggleSideBarDisplay, closeSideBarDisplay } = appSlice.actions;
 export default appSlice.reducer;
+export const { toggleSideBarDisplay, closeSideBarDisplay } = appSlice.actions;

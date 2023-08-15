@@ -4,15 +4,16 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { BiSearch } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { toggleSideBarDisplay } from "../store/slices/appSlice";
 import { Link } from "react-router-dom";
+import { cacheResults } from "../store/slices/searchSlice";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-
+  const searchQueryCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
   const toggleSidebarDisplay = () => {
@@ -28,6 +29,7 @@ export default function Navbar() {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
       const data = await response.json();
       setSearchSuggestions(data[1]);
+      dispatch(cacheResults({ [searchQuery]: data[1] }));
     } catch (error) {
       console.error("Error fetching search suggestions:", error);
     }
@@ -36,8 +38,12 @@ export default function Navbar() {
   useEffect(() => {
     let timer;
     if (searchQuery !== "") {
-      console.log("called");
-      timer = setTimeout(getSearchSuggestions, 400);
+      // Cache Check
+      if (searchQuery in searchQueryCache) {
+        setSearchSuggestions(searchQueryCache[searchQuery]);
+      } else {
+        timer = setTimeout(getSearchSuggestions, 400);
+      }
     }
     return () => {
       clearTimeout(timer);
@@ -93,7 +99,7 @@ export default function Navbar() {
 
           {/* Search Suggestions */}
           {showSuggestions && (
-            <div className="absolute bg-white rounded-md w-[500px] h-96 overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
+            <div className="absolute bg-white rounded-md w-[500px] h-fit overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
               <ul>
                 {searchSuggestions?.map((query) => (
                   <li
