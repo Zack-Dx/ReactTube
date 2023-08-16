@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { closeSideBarDisplay } from "../store/slices/appSlice";
 import { useSearchParams } from "react-router-dom";
@@ -6,6 +6,7 @@ import CommentContainer from "../components/CommentContainer";
 
 export default function WatchPage() {
   const [searchParams] = useSearchParams();
+  const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
   const videoId = searchParams.get("v");
   const dispatch = useDispatch();
 
@@ -15,7 +16,13 @@ export default function WatchPage() {
 
   return (
     <>
-      <main className="col-span-10 md:col-span-11 grid grid-cols-12 overflow-y-auto pt-10 pb-20 h-screen">
+      <main
+        className={` ${
+          isSideBarOpen
+            ? "md:col-span-10 col-span-8"
+            : "md:col-span-11 col-span-10"
+        }  grid grid-cols-12 overflow-y-auto pt-10 pb-20 h-screen`}
+      >
         <div className="col-span-8">
           <iframe
             width="870"

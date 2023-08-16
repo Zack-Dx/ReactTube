@@ -3,7 +3,7 @@ import FilterList from "./FilterList";
 import VideoSection from "./VideoSection";
 
 export default function MainContainer() {
-  const isSideBarOpen = useSelector((state) => state.app.isSideBarVisible);
+  const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
   return (
     <>
       <section
