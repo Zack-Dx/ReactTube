@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainContainer from "../components/MainContainer";
 import Body from "../layout/Body";
 import { LazyWatchPage } from "./lazy";
+import Error from "../pages/Error";
 
 // Router Setup
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
       {
         path: "/watch",
         element: <LazyWatchPage />,
+      },
+      {
+        path: "/*",
+        element: <Error />,
       },
     ],
   },
