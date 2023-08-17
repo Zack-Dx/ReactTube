@@ -12,7 +12,7 @@ export default function Comment({ data }) {
   };
 
   return (
-    <div className="flex space-x-4 items-center bg-slate-100 py-2 rounded-md px-3">
+    <div className="flex space-x-4 items-start bg-slate-100 py-3 rounded-lg px-3">
       <img
         src={comment?.authorProfileUrl}
         alt="User"

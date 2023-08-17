@@ -13,6 +13,7 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [error, setError] = useState("");
   const searchQueryCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ export default function Navbar() {
       setSearchSuggestions(data[1]);
       dispatch(cacheResults({ [searchQuery]: data[1] }));
     } catch (error) {
-      console.error("Error fetching search suggestions:", error);
+      setError("Error fetching search suggestions:", error);
     }
   }
 

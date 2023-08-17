@@ -8,6 +8,7 @@ import { YOUTUBE_COMMENT_THREAD_API, GOOGLE_API_KEY } from "../data/constants";
 export default function WatchPage() {
   const [searchParams] = useSearchParams();
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState("");
   const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
   const videoId = searchParams.get("v");
   const dispatch = useDispatch();
@@ -17,11 +18,10 @@ export default function WatchPage() {
       const response = await fetch(
         `${YOUTUBE_COMMENT_THREAD_API + videoId + "&key=" + GOOGLE_API_KEY}`
       );
-
       const comments = await response.json();
       setComments(comments);
     } catch (error) {
-      console.log(error);
+      setError("An error occured while fetching comments.");
     }
   };
 
@@ -32,6 +32,8 @@ export default function WatchPage() {
   useEffect(() => {
     fetchComments();
   }, [videoId]);
+
+  if (error) return error;
 
   return (
     <>
