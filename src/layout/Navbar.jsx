@@ -88,13 +88,17 @@ export default function Navbar() {
                   setSearchQuery(e.target.value);
                   displaySuggestionPreview(e.target.value);
                 }}
-                onBlur={() => setShowSuggestions(false)}
               />
             </div>
             {/* Search Button */}
-            <div className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none">
-              <BiSearch className="text-xl" />
-            </div>
+            <Link to={`/results/?keyword=${searchQuery}`}>
+              <div
+                onClick={() => setShowSuggestions(false)}
+                className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none"
+              >
+                <BiSearch className="text-xl" />
+              </div>
+            </Link>
           </div>
 
           {/* Search Suggestions */}
@@ -102,15 +106,18 @@ export default function Navbar() {
             <div className="absolute bg-white rounded-md w-[500px] h-fit overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
               <ul>
                 {searchSuggestions?.map((query) => (
-                  <li
+                  <Link
+                    to={`/results?keyword=${query}`}
                     key={query}
-                    className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                    onClick={() => setShowSuggestions(false)}
                   >
-                    <div className="flex items-center gap-4">
-                      <BsSearch className="text-sm" />
-                      {query}
-                    </div>
-                  </li>
+                    <li className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                      <div className="flex items-center gap-4">
+                        <BsSearch className="text-sm" />
+                        {query}
+                      </div>
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>

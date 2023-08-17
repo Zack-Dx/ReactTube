@@ -1,18 +1,37 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { closeSideBarDisplay } from "../store/slices/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "../components/CommentContainer";
+import { YOUTUBE_COMMENT_THREAD_API, GOOGLE_API_KEY } from "../data/constants";
 
 export default function WatchPage() {
   const [searchParams] = useSearchParams();
+  const [comments, setComments] = useState([]);
   const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
   const videoId = searchParams.get("v");
   const dispatch = useDispatch();
 
+  const fetchComments = async () => {
+    try {
+      const response = await fetch(
+        `${YOUTUBE_COMMENT_THREAD_API + videoId + "&key=" + GOOGLE_API_KEY}`
+      );
+
+      const comments = await response.json();
+      setComments(comments);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     dispatch(closeSideBarDisplay()); // Closing the Sidebar onload.
   }, [dispatch]);
+
+  useEffect(() => {
+    fetchComments();
+  }, [videoId]);
 
   return (
     <>
@@ -35,7 +54,7 @@ export default function WatchPage() {
           ></iframe>
         </div>
         <div className="md:col-span-4 hidden">Most Popular</div>
-        <CommentContainer />
+        <CommentContainer {...comments} />
       </main>
     </>
   );

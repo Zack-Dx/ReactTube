@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 const buttonContentArray = [
   "All",
@@ -17,7 +18,9 @@ export default function FilterList() {
     <>
       <section className="flex gap-3 my-5 overflow-x-auto scrollbar-hide md:px-10">
         {buttonContentArray?.map((textContent, index) => (
-          <Button key={index} textContent={textContent} />
+          <Link key={index} to={`/results?keyword=${textContent}`}>
+            <Button textContent={textContent} />
+          </Link>
         ))}
       </section>
     </>

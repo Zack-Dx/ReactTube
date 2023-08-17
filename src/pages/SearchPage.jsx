@@ -1,7 +1,6 @@
+import { useSearchParams } from "react-router-dom";
 export default function SearchPage() {
-  return (
-    <>
-      <h1>Search Page</h1>
-    </>
-  );
+  const [searchParams] = useSearchParams();
+  const keyword = searchParams.get("keyword");
+  return <section className="col-span-10">Search Page :{keyword}</section>;
 }

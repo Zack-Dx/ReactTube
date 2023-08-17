@@ -9,7 +9,7 @@ export default function CommentList({ comments }) {
           <Comment data={comment} />
           {comment?.replies && (
             <div className="pl-8 border-l-2 border-gray-300 space-y-2">
-              <CommentList comments={comment.replies} />
+              <CommentList comments={comment?.replies} />
             </div>
           )}
         </div>
