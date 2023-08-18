@@ -19,7 +19,6 @@ export default function SearchPage() {
         `${YOUTUBE_KEYWORD_LIST_API + keyword + "&key=" + GOOGLE_API_KEY}`
       );
       const videos = await response.json();
-      console.log(videos);
       setRelatedVideos(videos?.items);
       setLoading(false);
     } catch (error) {

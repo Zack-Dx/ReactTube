@@ -4,6 +4,7 @@ import { closeSideBarDisplay } from "../store/slices/appSlice";
 import { useSearchParams } from "react-router-dom";
 import CommentContainer from "../components/CommentContainer";
 import { YOUTUBE_COMMENT_THREAD_API, GOOGLE_API_KEY } from "../data/constants";
+import LiveChat from "../components/LiveChat";
 
 export default function WatchPage() {
   const [searchParams] = useSearchParams();
@@ -55,7 +56,7 @@ export default function WatchPage() {
             allowFullScreen
           ></iframe>
         </div>
-        <div className="md:col-span-4 hidden">Most Popular</div>
+        <LiveChat />
         <CommentContainer {...comments} />
       </main>
     </>
