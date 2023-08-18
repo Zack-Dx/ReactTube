@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { substringText } from "../utils/textUtils";
+import { timeGap } from "../utils/timeGap";
+
 export default function VideoPreviewCard({ videoInfo }) {
   if (!videoInfo) {
     return null;
@@ -28,7 +30,8 @@ export default function VideoPreviewCard({ videoInfo }) {
           </div>
           <div className="col-span-10 font-medium leading-6 overflow-hidden whitespace-normal">
             <h3 className="max-h-[53px]">
-              {substringText(0, 55, videoInfo?.snippet?.localized?.title)}
+              {substringText(0, 37, videoInfo?.snippet?.localized?.title) +
+                "..."}
             </h3>
             <p className="text-slate-600 text-sm font-normal">
               {videoInfo?.snippet?.channelTitle}
@@ -39,7 +42,7 @@ export default function VideoPreviewCard({ videoInfo }) {
                 views
               </span>
               <span> &#x2022; </span>
-              <span>2 months ago</span>
+              <span>{timeGap(videoInfo?.snippet?.publishedAt)}</span>
             </div>
           </div>
         </div>

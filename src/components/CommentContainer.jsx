@@ -15,5 +15,5 @@ export default function CommentContainer({ items }) {
 }
 
 CommentContainer.propTypes = {
-  items: PropTypes.array.isRequired,
+  items: PropTypes.array,
 };
