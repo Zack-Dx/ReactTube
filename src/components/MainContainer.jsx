@@ -4,6 +4,7 @@ import VideoSection from "./VideoSection/VideoSection";
 
 export default function MainContainer() {
   const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
+
   return (
     <>
       <section
