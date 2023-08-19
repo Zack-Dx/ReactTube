@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { cacheResults } from "../store/slices/searchSlice";
 import { PropagateLoader } from "react-spinners";
-import NavSearchLoader from "../components/NavSearchLoader";
+import NavSearchLoader from "../components/Loaders/NavSearchLoader";
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");

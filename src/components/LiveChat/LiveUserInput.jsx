@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { addMessage } from "../store/slices/chatSlice";
-import { useState } from "react";
+import { addMessage } from "../../store/slices/chatSlice";
 
 export default function LiveUserInput() {
   const [message, setMessage] = useState("");

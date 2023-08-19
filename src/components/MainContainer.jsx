@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import FilterList from "./FilterList";
-import VideoSection from "./VideoSection";
+import FilterList from "./Filter/FilterList";
+import VideoSection from "./VideoSection/VideoSection";
 
 export default function MainContainer() {
   const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);

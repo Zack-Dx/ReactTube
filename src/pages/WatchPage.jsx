@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { closeSideBarDisplay } from "../store/slices/appSlice";
 import { useSearchParams } from "react-router-dom";
-import CommentContainer from "../components/CommentContainer";
 import { YOUTUBE_COMMENT_THREAD_API, GOOGLE_API_KEY } from "../data/constants";
-import LiveChat from "../components/LiveChat";
+import LiveChat from "../components/LiveChat/LiveChat";
+import CommentContainer from "../components/Comment/CommentContainer";
 
 export default function WatchPage() {
   const [searchParams] = useSearchParams();

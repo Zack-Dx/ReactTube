@@ -1,5 +1,5 @@
-import Comment from "./Comment";
 import PropTypes from "prop-types";
+import Comment from "./Comment";
 
 export default function CommentList({ comments }) {
   return (
