@@ -43,12 +43,11 @@ export default function WatchPage() {
           isSideBarOpen
             ? "md:col-span-10 col-span-8"
             : "md:col-span-11 col-span-10"
-        }  grid grid-cols-12 overflow-y-auto pt-10 pb-20 h-screen`}
+        } grid grid-cols-12 overflow-y-auto pt-10 md:px-10 pb-20 h-screen gap-6`}
       >
-        <div className="col-span-8">
+        <div className="col-span-12 md:col-span-12 lg:col-span-8">
           <iframe
-            width="870"
-            height="490"
+            className="h-[500px] w-full shadow-2xl rounded-md"
             src={`https://www.youtube.com/embed/${videoId}`}
             title="YouTube video player"
             frameBorder="0"

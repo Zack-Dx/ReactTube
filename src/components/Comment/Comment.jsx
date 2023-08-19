@@ -22,7 +22,9 @@ export default function Comment({ data }) {
         <h3 className="text-gray-800 font-semibold">
           {comment?.authorDisplayName}
         </h3>
-        <p className="text-gray-600">{comment?.text}</p>
+        <p className="text-gray-600 max-w-[280px] md:max-w-full break-words">
+          {comment?.text}
+        </p>
         <div className="flex items-center gap-1 mt-2">
           {comment?.likeCount === 0 ? <GoThumbsup /> : <HiThumbUp />}
           {comment?.likeCount}

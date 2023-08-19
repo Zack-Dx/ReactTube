@@ -16,7 +16,7 @@ const buttonContentArray = [
 export default function FilterList() {
   return (
     <>
-      <section className="flex gap-3 my-5 overflow-x-auto scrollbar-hide md:px-10">
+      <section className="flex gap-3 my-5 overflow-x-auto px-3 scrollbar-hide md:px-10">
         {buttonContentArray?.map((textContent, index) => (
           <Link key={index} to={`/results?keyword=${textContent}`}>
             <Button textContent={textContent} />
