@@ -7,7 +7,8 @@ export default function LiveUserInput() {
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
 
-  const sendLiveMessage = () => {
+  const sendLiveMessage = (e) => {
+    e.preventDefault();
     dispatch(
       addMessage({
         username: "Puneet Superstar",
@@ -19,15 +20,21 @@ export default function LiveUserInput() {
   };
   return (
     <>
-      <input
-        type="text"
-        className="outline-none flex-grow text-sm"
-        placeholder="Enter your message"
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendLiveMessage} className="cursor-pointer">
-        <AiOutlineSend className="text-xl" />
-      </button>
+      <form onSubmit={sendLiveMessage} className="flex h-full justify-center">
+        <input
+          type="text"
+          className="flex-grow outline-none text-sm"
+          placeholder="Enter your message"
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <button
+          type="submit"
+          onClick={sendLiveMessage}
+          className="cursor-pointer"
+        >
+          <AiOutlineSend className="text-xl" />
+        </button>
+      </form>
     </>
   );
 }

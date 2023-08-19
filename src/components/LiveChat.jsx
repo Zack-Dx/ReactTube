@@ -38,7 +38,7 @@ export default function LiveChat() {
           <LiveChatMessage key={index} {...message} />
         ))}
       </div>
-      <div className="h-[50px] px-4 flex items-center justify-center gap-2 border-t">
+      <div className="h-[50px] px-4 border-t">
         <LiveUserInput />
       </div>
     </section>
