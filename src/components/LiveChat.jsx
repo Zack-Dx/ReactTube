@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import LiveChatMessage from "./LiveChatMessage";
+import LiveUserInput from "./LiveUserInput";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../store/slices/chatSlice";
 import { randomDataGenerator } from "../utils/helper";
@@ -32,10 +33,13 @@ export default function LiveChat() {
         <h3 className="text-center">Live Chat</h3>
       </div>
 
-      <div className="h-[450px] overflow-y-auto scrollbar-hide flex flex-col-reverse">
+      <div className="h-[400px] overflow-y-auto scrollbar-hide flex flex-col-reverse">
         {messages?.map((message, index) => (
           <LiveChatMessage key={index} {...message} />
         ))}
+      </div>
+      <div className="h-[50px] px-4 flex items-center justify-center gap-2 border-t">
+        <LiveUserInput />
       </div>
     </section>
   );
