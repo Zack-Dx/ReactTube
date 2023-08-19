@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { substringText } from "../../utils/textUtils";
-import { timeGap } from "../../utils/timeGap";
+import { timeGap } from "../../utils/helper";
 
 export default function VideoPreviewCard({ videoInfo }) {
   if (!videoInfo) {

@@ -1,12 +1,11 @@
 import { useEffect } from "react";
-
-import LiveUserInput from "./LiveUserInput";
-import LiveChatMessage from "./LiveChatMessage";
 import { useDispatch, useSelector } from "react-redux";
 import { addMessage } from "../../store/slices/chatSlice";
 import { randomDataGenerator } from "../../utils/helper";
 import { randomNameData } from "../../data/constants";
 import { randomMessagesData } from "../../data/constants";
+import LiveUserInput from "./LiveUserInput";
+import LiveChatMessage from "./LiveChatMessage";
 
 export default function LiveChat() {
   const messages = useSelector((store) => store.liveChat.messages);

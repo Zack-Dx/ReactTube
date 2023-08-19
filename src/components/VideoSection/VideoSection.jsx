@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { YOUTUBE_VIDEO_API_ENDPOINT } from "../../data/constants";
+import { VideoPreviewShimmer } from "./VideoPreviewShimmer";
 import fetchDataFromUrl from "../../utils/fetch";
 import VideoPreviewCard from "./VideoPreviewCard";
-import { VideoPreviewShimmer } from "./VideoPreviewShimmer";
 
 export default function VideoSection() {
   const [videos, setVideos] = useState([]);
