@@ -97,7 +97,7 @@ export default function Navbar() {
               <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
                 <input
                   type="text"
-                  className="outline-none w-96 text-sm p-2"
+                  className="outline-none w-fit text-sm p-2"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => {
@@ -123,7 +123,7 @@ export default function Navbar() {
             (loading ? (
               <NavSearchLoader Loader={PropagateLoader} />
             ) : (
-              <div className="absolute bg-white rounded-md w-[500px] h-fit overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
+              <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
                   {searchSuggestions?.map((query) => (
                     <Link

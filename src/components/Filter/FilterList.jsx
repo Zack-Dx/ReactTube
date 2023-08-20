@@ -3,13 +3,13 @@ import Button from "../common/Button";
 const buttonContentArray = [
   "All",
   "Javascript",
+  "DSA",
+  "Cricket",
+  "News",
   "Computer Science",
-  "Live",
-  "Gaming",
-  "Computer and Information",
-  "Game Shows",
-  "Driving",
-  "Coding",
+  "Comedy Shows",
+  "React",
+  "Frontend Interview",
   "Bigboss",
 ];
 
