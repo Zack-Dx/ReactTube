@@ -21,13 +21,14 @@ export default function Navbar() {
   const searchQueryCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const toggleSidebarDisplay = () => {
     dispatch(toggleSideBarDisplay());
   };
 
-  const searchSubmit = (e) => {
-    e.preventDefault();
-    navigate(`/results/?keyword=${searchQuery}`);
+  const searchSubmit = (event, query) => {
+    event.preventDefault();
+    navigate(`/results/?keyword=${query}`);
     setShowSuggestions(false);
   };
 
@@ -93,7 +94,7 @@ export default function Navbar() {
           <div className="flex items-center w-full md:w-80">
             {/* Search Input */}
             <div className="hidden md:block border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
-              <form onSubmit={searchSubmit}>
+              <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
                 <input
                   type="text"
                   className="outline-none w-96 text-sm p-2"
@@ -109,7 +110,7 @@ export default function Navbar() {
             {/* Search Button */}
             <div>
               <div
-                onClick={searchSubmit}
+                onClick={(e) => searchSubmit(e, searchQuery)}
                 className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none"
               >
                 <BiSearch className="text-xl" />
@@ -125,7 +126,7 @@ export default function Navbar() {
               <div className="absolute bg-white rounded-md w-[500px] h-fit overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
                   {searchSuggestions?.map((query) => (
-                    <div key={query} onClick={searchSubmit}>
+                    <div key={query} onClick={(e) => searchSubmit(e, query)}>
                       <li className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
                         <div className="flex items-center gap-4">
                           <BsSearch className="text-sm" />
