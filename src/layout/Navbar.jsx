@@ -126,14 +126,18 @@ export default function Navbar() {
               <div className="absolute bg-white rounded-md w-[500px] h-fit overflow-y-auto top-16 -right-28 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
                   {searchSuggestions?.map((query) => (
-                    <div key={query} onClick={(e) => searchSubmit(e, query)}>
+                    <Link
+                      key={query}
+                      onClick={() => setShowSuggestions(false)}
+                      to={`/results/?keyword=${query}`}
+                    >
                       <li className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
                         <div className="flex items-center gap-4">
                           <BsSearch className="text-sm" />
                           {query}
                         </div>
                       </li>
-                    </div>
+                    </Link>
                   ))}
                 </ul>
               </div>

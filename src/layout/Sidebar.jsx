@@ -30,7 +30,7 @@ export default function Sidebar() {
         <Link
           to={route}
           key={textContent}
-          className="flex  items-center justify-start mx-4 rounded-md py-3 px-3 cursor-pointer"
+          className="flex items-center justify-start mx-4 transition hover:bg-gray-200 rounded-md py-3 px-3 cursor-pointer"
         >
           <div className="text-xl mr-5">{icon}</div>
           <div className="text-sm font-normal">{textContent}</div>
