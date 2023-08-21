@@ -11,13 +11,13 @@ export default function SearchVideoCard({
   return (
     <Link
       to={`/watch?v=${id}`}
-      className="flex flex-col md:flex-row hover:bg-gray-100 p-4 rounded-lg shadow-md hover:shadow-lg transition hover:scale-105 duration-500"
+      className="flex flex-col md:flex-row hover:bg-gray-100 p-4 items-center rounded-lg shadow-md hover:shadow-lg transition hover:scale-105 duration-500"
     >
       <div className="w-full md:w-1/3">
         <img
           src={thumbnails?.medium?.url}
           alt={title}
-          className="w-fit h-auto rounded-lg"
+          className="w-full md:w-fit h-auto rounded-lg"
         />
       </div>
 

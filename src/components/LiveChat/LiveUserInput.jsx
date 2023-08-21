@@ -25,7 +25,7 @@ export default function LiveUserInput() {
       <form onSubmit={sendLiveMessage} className="flex h-full justify-center">
         <input
           type="text"
-          className="flex-grow outline-none text-sm"
+          className="flex-grow outline-none text-sm p-2"
           placeholder="Enter your message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}

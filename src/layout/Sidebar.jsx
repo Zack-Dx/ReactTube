@@ -26,7 +26,7 @@ export default function Sidebar() {
   const isSidebarOpen = useSelector((state) => state.app.isSideBarVisible);
 
   return isSidebarOpen ? (
-    <div className="col-span-4 md:col-span-2 h-screen py-3 overflow-y-auto scroll scrollbar-hide">
+    <div className="hidden md:block col-span-4 md:col-span-2 h-screen py-3 overflow-y-auto scroll scrollbar-hide">
       {sidebarData.map(({ icon, text: textContent, route }) => (
         <Link
           to={route}

@@ -66,7 +66,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className="flex justify-between px-6 py-2 shadow-md">
+      <nav className="flex justify-between px-2 md:px-6 py-2 shadow-md">
         <div id="start" className="flex items-center space-x-3">
           {/* Hamburger */}
           <button
@@ -92,7 +92,7 @@ export default function Navbar() {
         >
           <div className="flex items-center w-full md:w-80">
             {/* Search Input */}
-            <div className="hidden md:block border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
+            <div className="border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
               <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
                 <input
                   type="text"
@@ -110,7 +110,7 @@ export default function Navbar() {
             <div>
               <div
                 onClick={(e) => searchSubmit(e, searchQuery)}
-                className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-full md:rounded-r-full md:rounded-l-none"
+                className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-r-full"
               >
                 <BiSearch className="text-xl" />
               </div>
