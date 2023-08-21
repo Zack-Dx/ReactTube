@@ -36,7 +36,7 @@ export default function Navbar() {
     searchText ? setShowSuggestions(true) : setShowSuggestions(false);
   };
 
-  async function getSearchSuggestions() {
+  const getSearchSuggestions = async () => {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
       const data = await response.json();
@@ -46,7 +46,7 @@ export default function Navbar() {
     } catch (error) {
       setError("Error fetching search suggestions:", error);
     }
-  }
+  };
 
   useEffect(() => {
     let timer;
@@ -63,7 +63,7 @@ export default function Navbar() {
     };
   }, [searchQuery]);
 
-  if (error) return <h1> Something Went Wrong.</h1>;
+  if (error) return <h1>{error}</h1>;
 
   return (
     <header>
@@ -97,7 +97,7 @@ export default function Navbar() {
               <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
                 <input
                   type="text"
-                  className="outline-none w-fit text-sm p-2"
+                  className="outline-none w-full text-sm p-2"
                   placeholder="Search"
                   value={searchQuery}
                   onChange={(e) => {
