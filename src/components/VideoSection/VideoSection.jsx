@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  GOOGLE_API_KEY,
-  YOUTUBE_VIDEO_API_ENDPOINT,
-} from "../../data/constants";
 import { VideoPreviewShimmer } from "./VideoPreviewShimmer";
 import fetchDataFromUrl from "../../utils/fetch";
 import VideoPreviewCard from "./VideoPreviewCard";
+
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+const YOUTUBE_VIDEO_API_ENDPOINT = import.meta.env
+  .VITE_YOUTUBE_VIDEO_API_ENDPOINT;
 
 export default function VideoSection() {
   const [videos, setVideos] = useState([]);

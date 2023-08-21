@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { GOOGLE_API_KEY, YOUTUBE_KEYWORD_LIST_API } from "../data/constants";
 import SearchVideoCard from "../components/VideoSection/SearchVideoCard";
 import Loader from "../components/Loaders/Loader";
+
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+const YOUTUBE_KEYWORD_LIST_API = import.meta.env.VITE_YOUTUBE_KEYWORD_LIST_API;
 
 export default function SearchPage() {
   const [relatedVideos, setRelatedVideos] = useState([]);

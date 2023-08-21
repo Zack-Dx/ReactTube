@@ -2,9 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { closeSideBarDisplay } from "../store/slices/appSlice";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_COMMENT_THREAD_API, GOOGLE_API_KEY } from "../data/constants";
 import LiveChat from "../components/LiveChat/LiveChat";
 import CommentContainer from "../components/Comment/CommentContainer";
+
+const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+const YOUTUBE_COMMENT_THREAD_API = import.meta.env
+  .VITE_YOUTUBE_COMMENT_THREAD_API;
 
 export default function WatchPage() {
   const [searchParams] = useSearchParams();

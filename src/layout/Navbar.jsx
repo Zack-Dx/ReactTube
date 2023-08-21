@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_SEARCH_API } from "../data/constants";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { BiSearch } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
@@ -11,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 import { cacheResults } from "../store/slices/searchSlice";
 import { PropagateLoader } from "react-spinners";
 import NavSearchLoader from "../components/Loaders/NavSearchLoader";
+
+const YOUTUBE_SEARCH_API = import.meta.env.VITE_YOUTUBE_SEARCH_API;
 
 export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
