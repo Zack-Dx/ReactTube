@@ -64,8 +64,6 @@ export default function Navbar() {
     };
   }, [searchQuery]);
 
-  if (error) return <h1>{error}</h1>;
-
   return (
     <header>
       <nav className="flex justify-between px-6 py-2 shadow-md">

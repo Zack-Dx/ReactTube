@@ -12,10 +12,9 @@ export default function LiveUserInput() {
     e.preventDefault();
     dispatch(
       addMessage({
-        username: "Puneet Superstar",
+        username: "User",
         message,
-        avatarUrl:
-          "https://memes.co.in/Uploads/Media/Jun23/Tue20/942/9be49d38.jpg",
+        avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
       })
     );
     setMessage("");
