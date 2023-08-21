@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 import SearchVideoCard from "../components/VideoSection/SearchVideoCard";
 import Loader from "../components/Loaders/Loader";
+import FilterList from "../components/Filter/FilterList";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const YOUTUBE_KEYWORD_LIST_API = import.meta.env.VITE_YOUTUBE_KEYWORD_LIST_API;
@@ -45,8 +46,9 @@ export default function SearchPage() {
             isSideBarOpen
               ? "col-span-8 md:col-span-10"
               : "col-span-10 md:col-span-11"
-          } p-10 space-y-6 overflow-y-auto h-screen`}
+          } space-y-6 overflow-y-auto px-10 h-screen`}
         >
+          <FilterList />
           {relatedVideos?.map((video) =>
             video?.id?.videoId ? (
               <SearchVideoCard

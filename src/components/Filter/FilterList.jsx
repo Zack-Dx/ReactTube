@@ -8,7 +8,7 @@ const buttonContentArray = [
   "News",
   "Computer Science",
   "Comedy Shows",
-  "React",
+  "React JS",
   "Frontend Interview",
   "Bigboss",
 ];
@@ -16,9 +16,12 @@ const buttonContentArray = [
 export default function FilterList() {
   return (
     <>
-      <section className="flex gap-3 my-5 overflow-x-auto px-3 scrollbar-hide md:px-10">
+      <section className="flex gap-3 my-5 overflow-x-auto px-3 scrollbar-hide">
         {buttonContentArray?.map((textContent, index) => (
-          <Link key={index} to={`/results?keyword=${textContent}`}>
+          <Link
+            key={index}
+            to={textContent === "All" ? "/" : `/results?keyword=${textContent}`}
+          >
             <Button textContent={textContent} />
           </Link>
         ))}

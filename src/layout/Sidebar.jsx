@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { GoHomeFill } from "react-icons/go";
-import { MdOutlineAppShortcut, MdSubscriptions } from "react-icons/md";
+import { MdOutlineAppShortcut } from "react-icons/md";
+import { IoLogoOctocat } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 const sidebarData = [
@@ -12,12 +13,12 @@ const sidebarData = [
   {
     text: "Shorts",
     icon: <MdOutlineAppShortcut />,
-    route: "/",
+    route: `/results/?keyword=shorts`,
   },
   {
-    text: "Subscriptions",
-    icon: <MdSubscriptions />,
-    route: "/",
+    text: "Github",
+    icon: <IoLogoOctocat />,
+    route: "https://github.com/Zack-Dx/Youtube-React-Redux",
   },
 ];
 

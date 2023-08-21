@@ -60,7 +60,7 @@ export default function VideoSection() {
       <section
         ref={scrollContainer}
         onScroll={infiniteScroll}
-        className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto md:px-10 px-3"
+        className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto px-3"
       >
         {loading
           ? Array.from({ length: 10 }, (_, index) => (
