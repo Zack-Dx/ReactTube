@@ -124,6 +124,8 @@ export default function Navbar() {
           {showSuggestions &&
             (loading ? (
               <NavSearchLoader Loader={PropagateLoader} />
+            ) : error ? (
+              <h5>{error}</h5>
             ) : (
               <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
