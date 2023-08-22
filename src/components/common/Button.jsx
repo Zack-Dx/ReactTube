@@ -1,9 +1,25 @@
 import PropTypes from "prop-types";
-
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { selectActiveSection } from "../../store/slices/appSlice";
 export default function Button({ textContent }) {
+  const selectedSection = useSelector((store) => store.app.sectionSelected);
+  const dispatch = useDispatch();
+
+  const handleSectionSelect = (section) => {
+    dispatch(selectActiveSection(section));
+  };
+
   return (
     <>
-      <button className="bg-gray-100 outline-none transition whitespace-nowrap hover:bg-gray-200 rounded-md py-2 px-5 text-sm">
+      <button
+        onClick={() => handleSectionSelect(textContent)}
+        className={`${
+          selectedSection === textContent
+            ? "bg-black text-white"
+            : "bg-gray-100"
+        }  outline-none transition whitespace-nowrap rounded-md py-2 px-5 text-sm`}
+      >
         {textContent}
       </button>
     </>

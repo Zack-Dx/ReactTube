@@ -68,7 +68,6 @@ export default function Navbar() {
     <header>
       <nav className="flex justify-between px-2 md:px-6 py-2 shadow-md">
         <div id="start" className="flex items-center space-x-3">
-          {/* Hamburger */}
           <button
             type="button"
             onClick={toggleSidebarDisplay}
@@ -76,11 +75,10 @@ export default function Navbar() {
           >
             <RxHamburgerMenu className="text-xl" />
           </button>
-          {/* Logo */}
+
           <Link to={"/"}>
             <img
-              className="block"
-              width={90}
+              className="hidden md:block w-24"
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/1200px-YouTube_Logo_2017.svg.png"
               alt="youtube_logo"
             />
