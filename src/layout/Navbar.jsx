@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { cacheResults } from "../store/slices/searchSlice";
 import { PropagateLoader } from "react-spinners";
+import { toast } from "react-toastify";
 import NavSearchLoader from "../components/Loaders/NavSearchLoader";
 
 // Define the YouTube search API URL
@@ -19,7 +20,6 @@ export default function Navbar() {
   const [searchSuggestions, setSearchSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
   const searchQueryCache = useSelector((store) => store.search);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -50,7 +50,9 @@ export default function Navbar() {
       setLoading(false);
       dispatch(cacheResults({ [searchQuery]: data[1] }));
     } catch (error) {
-      setError("Error fetching search suggestions:", error);
+      setLoading(false);
+      setShowSuggestions(false);
+      toast.error("Error fetching search suggestions");
     }
   };
 
@@ -124,8 +126,6 @@ export default function Navbar() {
           {showSuggestions &&
             (loading ? (
               <NavSearchLoader Loader={PropagateLoader} />
-            ) : error ? (
-              <h5>{error}</h5>
             ) : (
               <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>

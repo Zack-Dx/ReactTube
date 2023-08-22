@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { VideoPreviewShimmer } from "./VideoPreviewShimmer";
+import { toast } from "react-toastify";
 import fetchDataFromUrl from "../../utils/fetch";
 import VideoPreviewCard from "./VideoPreviewCard";
 
@@ -12,7 +13,6 @@ export default function VideoSection() {
   const [loading, setLoading] = useState(true);
   const [videoCount, setVideoCount] = useState(10);
   const scrollContainer = useRef(null);
-  const [error, setError] = useState(null);
 
   // Function to fetch videos from the Youtube API
   const getData = async () => {
@@ -26,11 +26,14 @@ export default function VideoSection() {
         }`
       );
       const data = res?.items;
+      if (!data) {
+        return toast.error("Something went wrong.");
+      }
       setVideos(data);
       setLoading(false);
     } catch (error) {
-      setError("An error occurred while fetching data.");
       setLoading(false);
+      toast.error("An error occurred while fetching data.");
     }
   };
 
@@ -47,7 +50,7 @@ export default function VideoSection() {
         setVideoCount((prev) => prev + 10);
       }
     } catch (error) {
-      setError("An error occurred while fetching data.");
+      toast.error("An error occurred while fetching excess data.");
     }
   };
 
@@ -57,23 +60,19 @@ export default function VideoSection() {
 
   return (
     <>
-      {error ? (
-        <h5>{error}</h5>
-      ) : (
-        <section
-          ref={scrollContainer}
-          onScroll={infiniteScroll}
-          className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto"
-        >
-          {loading
-            ? Array.from({ length: 10 }, (_, index) => (
-                <VideoPreviewShimmer key={index} />
-              ))
-            : videos?.map((video) => (
-                <VideoPreviewCard key={video?.id} videoInfo={video} />
-              ))}
-        </section>
-      )}
+      <section
+        ref={scrollContainer}
+        onScroll={infiniteScroll}
+        className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto"
+      >
+        {loading
+          ? Array.from({ length: 10 }, (_, index) => (
+              <VideoPreviewShimmer key={index} />
+            ))
+          : videos?.map((video) => (
+              <VideoPreviewCard key={video?.id} videoInfo={video} />
+            ))}
+      </section>
     </>
   );
 }
