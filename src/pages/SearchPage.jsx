@@ -46,7 +46,7 @@ export default function SearchPage() {
             isSideBarOpen
               ? "col-span-12 md:col-span-10"
               : "col-span-10 md:col-span-11"
-          } space-y-6 overflow-y-auto px-4 h-screen`}
+          } space-y-6 overflow-y-auto h-screen`}
         >
           <FilterList />
           {relatedVideos?.map((video) =>
