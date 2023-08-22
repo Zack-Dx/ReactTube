@@ -14,6 +14,7 @@ export default function VideoSection() {
   const scrollContainer = useRef(null);
   const [error, setError] = useState(null);
 
+  // Function to fetch videos from the Youtube API
   const getData = async () => {
     try {
       const res = await fetchDataFromUrl(
@@ -33,6 +34,7 @@ export default function VideoSection() {
     }
   };
 
+  // Function to handle the infinite scroll for videos
   const infiniteScroll = () => {
     const container = scrollContainer.current;
     const scrollHeight = container.scrollHeight;
@@ -53,23 +55,25 @@ export default function VideoSection() {
     getData();
   }, [videoCount]);
 
-  if (error) return <div>{error}</div>;
-
   return (
     <>
-      <section
-        ref={scrollContainer}
-        onScroll={infiniteScroll}
-        className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto"
-      >
-        {loading
-          ? Array.from({ length: 10 }, (_, index) => (
-              <VideoPreviewShimmer key={index} />
-            ))
-          : videos?.map((video) => (
-              <VideoPreviewCard key={video?.id} videoInfo={video} />
-            ))}
-      </section>
+      {error ? (
+        <h5>{error}</h5>
+      ) : (
+        <section
+          ref={scrollContainer}
+          onScroll={infiniteScroll}
+          className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto"
+        >
+          {loading
+            ? Array.from({ length: 10 }, (_, index) => (
+                <VideoPreviewShimmer key={index} />
+              ))
+            : videos?.map((video) => (
+                <VideoPreviewCard key={video?.id} videoInfo={video} />
+              ))}
+        </section>
+      )}
     </>
   );
 }

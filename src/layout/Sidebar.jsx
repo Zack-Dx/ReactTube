@@ -32,6 +32,7 @@ export default function Sidebar() {
   const sectionSelected = useSelector((store) => store.app.sectionSelected);
   const dispatch = useDispatch();
 
+  // Function to handle the active section on sidebar
   const handleSectionSelect = (section) => {
     dispatch(selectActiveSection(section));
   };

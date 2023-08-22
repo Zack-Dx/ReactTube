@@ -8,8 +8,9 @@ export default function LiveUserInput() {
   const dispatch = useDispatch();
   const isDisabled = message === "";
 
-  const sendLiveMessage = (e) => {
-    e.preventDefault();
+  // Function to handle the Live user message
+  const sendLiveMessage = (event) => {
+    event.preventDefault();
     dispatch(
       addMessage({
         username: "User",

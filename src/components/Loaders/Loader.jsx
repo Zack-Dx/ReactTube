@@ -8,7 +8,7 @@ export default function Loader() {
     <>
       <div
         className={`h-screen ${
-          isSideBarOpen ? "col-span-8" : "col-span-10"
+          isSideBarOpen ? "col-span-12 md:col-span-8" : "col-span-10"
         } flex items-center justify-center`}
       >
         <BeatLoader color="#ec0e3d" />

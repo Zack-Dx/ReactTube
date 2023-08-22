@@ -11,6 +11,7 @@ export default function LiveChat() {
   const messages = useSelector((store) => store.liveChat.messages);
   const dispatch = useDispatch();
 
+  // useEffect (Handling the debouncing for Live Chat)
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch(

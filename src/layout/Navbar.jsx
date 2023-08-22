@@ -11,6 +11,7 @@ import { cacheResults } from "../store/slices/searchSlice";
 import { PropagateLoader } from "react-spinners";
 import NavSearchLoader from "../components/Loaders/NavSearchLoader";
 
+// Define the YouTube search API URL
 const YOUTUBE_SEARCH_API = import.meta.env.VITE_YOUTUBE_SEARCH_API;
 
 export default function Navbar() {
@@ -23,20 +24,24 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // Function to toggle the sidebar display
   const toggleSidebarDisplay = () => {
     dispatch(toggleSideBarDisplay());
   };
 
+  // Function to handle the search form submission
   const searchSubmit = (event, query) => {
     event.preventDefault();
     navigate(`/results/?keyword=${query}`);
     setShowSuggestions(false);
   };
 
+  // Function to show/hide search suggestions based on input
   const displaySuggestionPreview = (searchText) => {
     searchText ? setShowSuggestions(true) : setShowSuggestions(false);
   };
 
+  // Function to fetch search suggestions from the API
   const getSearchSuggestions = async () => {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);

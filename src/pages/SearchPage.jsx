@@ -16,6 +16,7 @@ export default function SearchPage() {
   const keyword = searchParams.get("keyword");
   const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
 
+  // Function to fetch videos based on keywords
   const fetchbyKeyword = async () => {
     try {
       const response = await fetch(
@@ -34,12 +35,12 @@ export default function SearchPage() {
     fetchbyKeyword();
   }, [keyword]);
 
-  if (error) return error;
-
   return (
     <>
       {loading ? (
         <Loader />
+      ) : error ? (
+        <h5>{error}</h5>
       ) : (
         <section
           className={`${
