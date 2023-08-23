@@ -27,7 +27,7 @@ export default function VideoSection() {
       );
       const data = res?.items;
       if (!data) {
-        return toast.error("Something went wrong.");
+        return toast.error("An error occurred while fetching data.");
       }
       setVideos(data);
       setLoading(false);
@@ -63,7 +63,7 @@ export default function VideoSection() {
       <section
         ref={scrollContainer}
         onScroll={infiniteScroll}
-        className="grid grid-cols-12 mt-10 h-screen pb-44 gap-6 overflow-y-auto"
+        className="grid grid-cols-12 mt-10 h-screen pb-44 px-3 gap-6 overflow-y-auto"
       >
         {loading
           ? Array.from({ length: 10 }, (_, index) => (

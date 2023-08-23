@@ -24,7 +24,7 @@ export default function SearchPage() {
       );
       const videos = await response.json();
       if (!videos || videos?.error) {
-        return toast.error("Something went wrong.");
+        return toast.error("An error occurred while fetching data.");
       }
       setRelatedVideos(videos?.items);
       setLoading(false);
@@ -40,18 +40,18 @@ export default function SearchPage() {
 
   return (
     <>
-      {loading ? (
-        <Loader />
-      ) : (
-        <section
-          className={`${
-            isSideBarOpen
-              ? "col-span-12 md:col-span-10"
-              : "col-span-10 md:col-span-11"
-          } space-y-6 overflow-y-auto h-screen`}
-        >
-          <FilterList />
-          {relatedVideos?.map((video) =>
+      <section
+        className={`${
+          isSideBarOpen
+            ? "col-span-12 md:col-span-10"
+            : "col-span-10 md:col-span-11"
+        } space-y-6 overflow-y-auto h-screen`}
+      >
+        <FilterList />
+        {loading ? (
+          <Loader />
+        ) : (
+          relatedVideos?.map((video) =>
             video?.id?.videoId ? (
               <SearchVideoCard
                 key={video?.etag}
@@ -59,9 +59,9 @@ export default function SearchPage() {
                 id={video?.id?.videoId}
               />
             ) : null
-          )}
-        </section>
-      )}
+          )
+        )}
+      </section>
     </>
   );
 }

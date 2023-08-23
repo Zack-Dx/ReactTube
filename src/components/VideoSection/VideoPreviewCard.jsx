@@ -14,7 +14,7 @@ export default function VideoPreviewCard({ videoInfo }) {
     <>
       <Link
         to={`/watch?v=${videoInfo?.id}`}
-        className="col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer"
+        className="col-span-12 md:col-span-6 lg:col-span-4 transition hover:opacity-90 cursor-pointer"
       >
         <img
           className="rounded-xl hover:rounded-none duration-500 m-auto w-full"
