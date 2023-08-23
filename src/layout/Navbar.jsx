@@ -45,10 +45,18 @@ export default function Navbar() {
   const getSearchSuggestions = async () => {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-      const data = await response.json();
-      setSearchSuggestions(data[1]);
+      const data = await response.text();
+      const searchSuggestions = [];
+      data?.split("[").forEach((ele, index) => {
+        if (!ele.split('"')[1] || index === 1) return;
+        return searchSuggestions.push(ele.split('"')[1]);
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      setSearchSuggestions(searchSuggestions);
+      dispatch(cacheResults({ [searchQuery]: searchSuggestions }));
       setLoading(false);
-      dispatch(cacheResults({ [searchQuery]: data[1] }));
     } catch (error) {
       setLoading(false);
       setShowSuggestions(false);
