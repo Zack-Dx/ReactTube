@@ -4,7 +4,10 @@ import { BiSearch } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleSideBarDisplay } from "../store/slices/appSlice";
+import {
+  selectActiveSection,
+  toggleSideBarDisplay,
+} from "../store/slices/appSlice";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { cacheResults } from "../store/slices/searchSlice";
@@ -106,7 +109,12 @@ export default function Navbar() {
           <div className="flex items-center w-full md:w-80">
             {/* Search Input */}
             <div className="border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
-              <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
+              <form
+                onSubmit={(e) => {
+                  dispatch(selectActiveSection(searchQuery));
+                  searchSubmit(e, searchQuery);
+                }}
+              >
                 <input
                   type="text"
                   className="outline-none w-full text-sm p-2"
@@ -137,7 +145,7 @@ export default function Navbar() {
             ) : (
               <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
-                  {searchSuggestions?.map((query) => (
+                  {searchSuggestions?.slice(0, 10).map((query) => (
                     <Link
                       key={query}
                       onClick={() => setShowSuggestions(false)}

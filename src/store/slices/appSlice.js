@@ -4,7 +4,7 @@ const appSlice = createSlice({
   name: "app",
   initialState: {
     isSideBarVisible: true,
-    sectionSelected: "All",
+    sectionSelected: "all",
   },
   reducers: {
     toggleSideBarDisplay: (state) => {
@@ -14,7 +14,8 @@ const appSlice = createSlice({
       state.isSideBarVisible = false;
     },
     selectActiveSection: (state, action) => {
-      state.sectionSelected = action.payload;
+      const section = action.payload.toLowerCase();
+      state.sectionSelected = section;
     },
   },
 });

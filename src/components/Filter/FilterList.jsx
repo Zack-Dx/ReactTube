@@ -11,7 +11,7 @@ const buttonContentArray = [
   "Comedy Shows",
   "React JS",
   "Frontend Interview",
-  "Bigboss",
+  "Jukebox",
 ];
 
 export default function FilterList() {

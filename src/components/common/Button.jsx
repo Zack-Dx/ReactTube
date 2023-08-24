@@ -16,7 +16,7 @@ export default function Button({ textContent }) {
       <button
         onClick={() => handleSectionSelect(textContent)}
         className={`${
-          selectedSection === textContent
+          selectedSection === textContent.toLowerCase()
             ? "bg-black text-white"
             : "bg-gray-100"
         }  outline-none transition whitespace-nowrap rounded-md py-2 px-5 text-sm`}

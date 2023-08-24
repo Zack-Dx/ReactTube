@@ -21,7 +21,7 @@ export default function VideoSection() {
         `${
           YOUTUBE_VIDEO_API_ENDPOINT +
           videoCount +
-          "&regionCode=IN&key=" +
+          "&regionCode=US&key=" +
           GOOGLE_API_KEY
         }`
       );
