@@ -48,16 +48,11 @@ export default function Navbar() {
   const getSearchSuggestions = async () => {
     try {
       const response = await fetch(YOUTUBE_SEARCH_API + searchQuery);
-      const data = await response.text();
-      const searchSuggestions = [];
-      data?.split("[").forEach((ele, index) => {
-        if (!ele.split('"')[1] || index === 1) return;
-        return searchSuggestions.push(ele.split('"')[1]);
-      });
+      const data = await response.json();
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-      setSearchSuggestions(searchSuggestions);
+      setSearchSuggestions(data[1]);
       dispatch(cacheResults({ [searchQuery]: searchSuggestions }));
       setLoading(false);
     } catch (error) {
@@ -145,7 +140,7 @@ export default function Navbar() {
             ) : (
               <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
                 <ul>
-                  {searchSuggestions?.slice(0, 10).map((query) => (
+                  {searchSuggestions?.map((query) => (
                     <Link
                       key={query}
                       onClick={() => setShowSuggestions(false)}
