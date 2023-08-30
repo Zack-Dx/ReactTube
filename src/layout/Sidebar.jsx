@@ -72,9 +72,9 @@ export default function Sidebar() {
               handleSectionSelect(textContent === "Home" ? "All" : textContent)
             }
             className={`${
-              sectionSelected === textContent
+              sectionSelected === textContent.toLowerCase()
                 ? "bg-gray-200"
-                : sectionSelected === "All" && textContent === "Home"
+                : sectionSelected === "all" && textContent === "Home"
                 ? "bg-gray-200"
                 : null
             } flex transition flex-col items-center justify-center py-4 hover:bg-gray-200 rounded-md`}

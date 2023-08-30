@@ -24,7 +24,7 @@ export default function Comment({ data }) {
           {comment?.authorDisplayName}
         </h3>
         <p
-          className="text-gray-600 max-w-[280px] md:max-w-full break-words"
+          className="text-gray-600 max-w-[280px] md:max-w-full break-words text-sm"
           dangerouslySetInnerHTML={formatCommentText(comment?.text)}
         ></p>
         <div className="flex items-center gap-1 mt-2">
