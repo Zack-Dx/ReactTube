@@ -36,6 +36,7 @@ export default function Navbar() {
   const searchSubmit = (event, query) => {
     event.preventDefault();
     navigate(`/results/?keyword=${query}`);
+    dispatch(selectActiveSection(searchQuery));
     setShowSuggestions(false);
   };
 
@@ -104,12 +105,7 @@ export default function Navbar() {
           <div className="flex items-center w-full md:w-80">
             {/* Search Input */}
             <div className="border-y-2 border-l-2 pl-4 rounded-l-full w-full md:w-80">
-              <form
-                onSubmit={(e) => {
-                  dispatch(selectActiveSection(searchQuery));
-                  searchSubmit(e, searchQuery);
-                }}
-              >
+              <form onSubmit={(e) => searchSubmit(e, searchQuery)}>
                 <input
                   type="text"
                   className="outline-none w-full text-sm p-2"
@@ -125,7 +121,10 @@ export default function Navbar() {
             {/* Search Button */}
             <div>
               <div
-                onClick={(e) => searchSubmit(e, searchQuery)}
+                onClick={(e) => {
+                  searchSubmit(e, searchQuery);
+                  dispatch(selectActiveSection(searchQuery));
+                }}
                 className="bg-gray-100 py-[9px] px-5 border cursor-pointer hover:bg-gray-200 rounded-r-full"
               >
                 <BiSearch className="text-xl" />
@@ -143,7 +142,10 @@ export default function Navbar() {
                   {searchSuggestions?.map((query) => (
                     <Link
                       key={query}
-                      onClick={() => setShowSuggestions(false)}
+                      onClick={() => {
+                        setShowSuggestions(false);
+                        dispatch(selectActiveSection(searchQuery));
+                      }}
                       to={`/results/?keyword=${query}`}
                     >
                       <li className="px-3 py-2 hover:bg-gray-100 cursor-pointer">

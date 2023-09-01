@@ -20,11 +20,11 @@ export default function Comment({ data }) {
         className="w-10 h-10 rounded-full"
       />
       <div>
-        <h3 className="text-gray-800 font-semibold">
+        <h3 className="text-gray-800 font-semibold text-base">
           {comment?.authorDisplayName}
         </h3>
         <p
-          className="text-gray-600 max-w-[280px] md:max-w-full break-words text-sm"
+          className="text-gray-600 max-w-[280px] md:max-w-full break-words text-sm font-medium"
           dangerouslySetInnerHTML={formatCommentText(comment?.text)}
         ></p>
         <div className="flex items-center gap-1 mt-2">
