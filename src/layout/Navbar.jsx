@@ -54,7 +54,7 @@ export default function Navbar() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       setSearchSuggestions(data[1]);
-      dispatch(cacheResults({ [searchQuery]: searchSuggestions }));
+      dispatch(cacheResults({ [searchQuery]: data[1] }));
       setLoading(false);
     } catch (error) {
       setLoading(false);
@@ -67,7 +67,10 @@ export default function Navbar() {
     let timer;
     if (searchQuery !== "") {
       // Cache Check
-      if (searchQuery in searchQueryCache) {
+      if (
+        searchQuery in searchQueryCache &&
+        searchQueryCache[searchQuery].length !== 0
+      ) {
         setSearchSuggestions(searchQueryCache[searchQuery]);
       } else {
         timer = setTimeout(getSearchSuggestions, 400);
