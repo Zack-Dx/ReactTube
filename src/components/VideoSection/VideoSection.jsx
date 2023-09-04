@@ -45,7 +45,7 @@ export default function VideoSection() {
     const userScrolledHeight = scrollTop + window.innerHeight;
 
     try {
-      if (userScrolledHeight + 1 >= scrollHeight) {
+      if (userScrolledHeight >= scrollHeight - 1) {
         if (videoCount === 50) return;
         setVideoCount((prev) => prev + 10);
       }

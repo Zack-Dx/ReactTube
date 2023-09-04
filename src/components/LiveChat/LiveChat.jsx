@@ -18,8 +18,7 @@ export default function LiveChat() {
         addMessage({
           username: randomDataGenerator(randomNameData),
           message: randomDataGenerator(randomMessagesData),
-          avatarUrl:
-            "https://yt4.ggpht.com/5n8eUJFmJqXK1pKuecCd9mjv10sUvtYtdIpdRXqxkR-93xeqgPyjXCkvDvTRpoWJEfh1tYcOUUw=s32-c-k-c0x00ffffff-no-rj",
+          avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
         })
       );
     }, 1000);
