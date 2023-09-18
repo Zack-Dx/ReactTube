@@ -11,7 +11,7 @@ export default function Loader() {
           isSideBarOpen ? "col-span-12 md:col-span-8" : "col-span-10"
         } flex items-center justify-center`}
       >
-        <BeatLoader color="#ec0e3d" />
+        <BeatLoader color="#36d7b7" />
       </div>
     </>
   );
