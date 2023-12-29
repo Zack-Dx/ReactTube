@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import socket from "../../socket/socket";
@@ -17,8 +17,8 @@ export default function LiveUserInput() {
     setMessage("");
   };
 
-  useEffect(() => {
-    const handleNewMessage = (newMessage) => {
+  const handleNewMessage = useCallback(
+    (newMessage) => {
       dispatch(
         addMessage({
           username: "User",
@@ -26,13 +26,18 @@ export default function LiveUserInput() {
           avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
         })
       );
-    };
+    },
+    [dispatch]
+  );
 
+  useEffect(() => {
     socket.on("new-message", handleNewMessage);
-    () => {
+
+    return () => {
       socket.off("new-message", handleNewMessage);
     };
-  }, [dispatch]);
+  }, [handleNewMessage]);
+
   return (
     <>
       <form onSubmit={sendLiveMessage} className="flex h-full justify-center">
@@ -44,12 +49,7 @@ export default function LiveUserInput() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <button
-          type="submit"
-          disabled={isDisabled}
-          onClick={sendLiveMessage}
-          className="cursor-pointer"
-        >
+        <button type="submit" disabled={isDisabled} className="cursor-pointer">
           <AiOutlineSend
             className={`text-xl ${isDisabled ? "text-gray-300" : null}`}
           />
