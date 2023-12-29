@@ -14,14 +14,14 @@ export default function LiveUserInput() {
   const sendLiveMessage = (event) => {
     event.preventDefault();
     socket.emit("new-message", inputRef.current.value);
+    setMessage("");
   };
 
   useEffect(() => {
     const handleNewMessage = (newMessage) => {
-      // Handle the new message, for example, dispatch to Redux store
       dispatch(
         addMessage({
-          username: "User", // Update with the actual username
+          username: "User",
           message: newMessage,
           avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
         })
