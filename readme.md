@@ -1,8 +1,8 @@
 <div align="center">
   <h1 id="title">ReactTubeClone 🎥</h1>
-<img width="1424" alt="Screenshot 2023-09-01 at 9 29 30 AM" src="https://github.com/Zack-Dx/ReactTubeClone/assets/105835098/11193bcb-d7f0-428d-a25f-efa599421cf2">
+<img width="1416" alt="Screenshot 2023-09-18 at 6 22 03 PM" src="https://github.com/Zack-Dx/ReactTubeClone/assets/105835098/98ddb83c-8dad-402d-b15b-ff213b7a2344">
 
-  <p id="description">Embark on a YouTube adventure like never before! Welcome to ReactTubeClone, where we've meticulously crafted a YouTube clone using the power of React, Redux, and Tailwind CSS. Get ready to supercharge your video-watching experience!</p>
+  <p id="description">Embark on a Video adventure like never before! Welcome to ReactTubeClone, where we've meticulously crafted a YouTube like streaming web app using the power of React, Redux, and Tailwind CSS. Get ready to supercharge your video-watching experience!</p>
 </div>
 
 ## 🚀 [Demo](https://reactube-zack.vercel.app/)

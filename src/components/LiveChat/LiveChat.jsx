@@ -1,31 +1,10 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addMessage } from "../../store/slices/chatSlice";
-import { randomDataGenerator } from "../../utils/helper";
-import { randomNameData } from "../../data/constants";
-import { randomMessagesData } from "../../data/constants";
+import { useSelector } from "react-redux";
+
 import LiveUserInput from "./LiveUserInput";
 import LiveChatMessage from "./LiveChatMessage";
 
 export default function LiveChat() {
   const messages = useSelector((store) => store.liveChat.messages);
-  const dispatch = useDispatch();
-
-  // useEffect (Handling the debouncing for Live Chat)
-  useEffect(() => {
-    const interval = setInterval(() => {
-      dispatch(
-        addMessage({
-          username: randomDataGenerator(randomNameData),
-          message: randomDataGenerator(randomMessagesData),
-          avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
-        })
-      );
-    }, 1000);
-    return () => {
-      clearInterval(interval);
-    };
-  }, []);
 
   return (
     <section className="lg:col-span-4 col-span-12 rounded-lg h-[500px] border">

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useDispatch } from "react-redux";
+import socket from "../../socket/socket";
 import { addMessage } from "../../store/slices/chatSlice";
 
 export default function LiveUserInput() {
+  const inputRef = useRef(null);
   const [message, setMessage] = useState("");
   const dispatch = useDispatch();
   const isDisabled = message === "";
@@ -11,20 +13,31 @@ export default function LiveUserInput() {
   // Function to handle the Live user message
   const sendLiveMessage = (event) => {
     event.preventDefault();
-    dispatch(
-      addMessage({
-        username: "User",
-        message,
-        avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
-      })
-    );
-    setMessage("");
+    socket.emit("new-message", inputRef.current.value);
   };
 
+  useEffect(() => {
+    const handleNewMessage = (newMessage) => {
+      // Handle the new message, for example, dispatch to Redux store
+      dispatch(
+        addMessage({
+          username: "User", // Update with the actual username
+          message: newMessage,
+          avatarUrl: "https://static.thenounproject.com/png/4035889-200.png",
+        })
+      );
+    };
+
+    socket.on("new-message", handleNewMessage);
+    () => {
+      socket.off("new-message", handleNewMessage);
+    };
+  }, [dispatch]);
   return (
     <>
       <form onSubmit={sendLiveMessage} className="flex h-full justify-center">
         <input
+          ref={inputRef}
           type="text"
           className="flex-grow outline-none text-sm p-2"
           placeholder="Enter your message"
