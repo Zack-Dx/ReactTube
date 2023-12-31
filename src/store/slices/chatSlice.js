@@ -1,19 +1,33 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { LIVECHAT_COUNT } from "../../data/constants";
 
 const chatSlice = createSlice({
-  name: "liveChat",
-  initialState: {
-    messages: [],
-  },
-  reducers: {
-    addMessage: (state, action) => {
-      if (state.messages.length > LIVECHAT_COUNT)
-        state.messages.splice(LIVECHAT_COUNT, 1);
-      state.messages.unshift(action.payload);
+    name: "liveChat",
+    initialState: {
+        activeVideo: {
+            videoId: "",
+            messages: [],
+        },
     },
-  },
+    reducers: {
+        setActiveVideoId: (state, action) => {
+            state.activeVideo.videoId = action.payload;
+        },
+        setActiveVideoMessages: (state, action) => {
+            state.activeVideo.messages = action.payload;
+        },
+
+        setIncomingVideoMessage: (state, action) => {
+            state.activeVideo.messages = [
+                action.payload,
+                ...state.activeVideo.messages,
+            ];
+        },
+    },
 });
 
 export default chatSlice.reducer;
-export const { addMessage } = chatSlice.actions;
+export const {
+    setActiveVideoId,
+    setActiveVideoMessages,
+    setIncomingVideoMessage,
+} = chatSlice.actions;
