@@ -39,6 +39,7 @@ export default function WatchPage() {
             toast.error("An error occured while fetching comments.");
         }
     };
+
     const handleInitialVideoMessages = useCallback(
         (data) => {
             dispatch(setActiveVideoMessages(data));
@@ -61,7 +62,7 @@ export default function WatchPage() {
 
     useEffect(() => {
         fetchComments();
-    }, [videoId]);
+    }, [videoId, fetchComments]);
 
     return (
         <>
