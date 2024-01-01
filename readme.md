@@ -1,40 +1,47 @@
 <div align="center">
-  <h1 id="title">ReactTubeClone 🎥</h1>
-<img width="1416" alt="Screenshot 2023-09-18 at 6 22 03 PM" src="https://github.com/Zack-Dx/ReactTubeClone/assets/105835098/98ddb83c-8dad-402d-b15b-ff213b7a2344">
-
-  <p id="description">Embark on a Video adventure like never before! Welcome to ReactTubeClone, where we've meticulously crafted a YouTube like streaming web app using the power of React, Redux, and Tailwind CSS. Get ready to supercharge your video-watching experience!</p>
+  <h1 id="title">ReactTube 🎥</h1>
+  <img width="1416" alt="Screenshot 2023-09-18 at 6 22 03 PM" src="https://github.com/Zack-Dx/ReactTube/assets/105835098/98ddb83c-8dad-402d-b15b-ff213b7a2344">
+  
+  <p id="description">Welcome to ReactTube, a cutting-edge video streaming web app where React meets innovation. Experience the power of real-time communication, seamless navigation, and lightning-fast loading!</p>
 </div>
 
 ## 🚀 [Demo](https://reactube-zack.vercel.app/)
 
 ## 🌟 Features
 
-Uncover the magic of ReactTubeClone with these outstanding features:
+Uncover the magic of ReactTube with these standout features:
 
-- **Infinite Scroll**: Unleash non-stop entertainment! Our app offers infinite scrolling, ensuring you never run out of captivating videos.
-- **Debounced Search**: Find your favorites in the blink of an eye. Our debounced search guarantees lightning-fast results.
-- **Memoized Cache**: We're all about speed. Experience swift responses and instant access to your beloved content thanks to memoized caching.
-- **Perfect Responsive UI**: Seamlessly switch between devices. Our app boasts a flawless Tailwind CSS responsive UI, looking stunning on any screen size.
-- **Lazy Loading & Code Splitting**: Dive into a world of rapid loading times. Lazy loading and code splitting mean only the essentials load, reducing initial wait times.
-- **React Router DOM**: Navigate effortlessly. We've integrated React Router DOM for seamless and intuitive routing, ensuring you're never lost.
-- **Redux State Management**: Stay organized. Redux adeptly manages our app's state, providing an organized and centralized approach to data handling.
-- **YouTube API Integration**: Access the vast YouTube library. We utilize the YouTube API to fetch data, guaranteeing access to the latest and greatest content.
-- **Live Chat Implementation**: Connect with fellow viewers. Our live chat feature, powered by API polling, enables real-time conversations while watching videos.
+-   **Infinite Scroll**: Dive into a bottomless pool of entertainment! Scroll endlessly through captivating videos without interruptions.
+
+-   **Real-time Chat with Viewers**: Connect with viewers in the moment! Our live chat powered by Socket.IO ensures instant conversations, turning video-watching into a social experience.
+
+-   **Lazy Loading & Code Splitting**: Experience speed like never before! Lazy loading and code splitting ensure that only the essentials load, resulting in blazing-fast initial load times.
+
+-   **Redux State Management**: Stay organized and in control! Redux Toolkit seamlessly manages the state of our app, providing a centralized and efficient approach to data handling.
+
+-   **React Router DOM for Intuitive Navigation**: Explore effortlessly! React Router DOM is integrated for smooth and intuitive routing, ensuring you're always on the right path.
+
+-   **Debounced Search for Quick Results**: Find your favorites in a flash! Our debounced search guarantees speedy results, making content discovery a breeze.
+
+-   **Perfect Responsive UI with Tailwind CSS**: Switch between devices seamlessly! Our app boasts a flawless, Tailwind CSS responsive UI, ensuring a stunning visual experience on any screen size.
+
+-   **YouTube API Integration**: Access the latest and greatest content! We leverage the YouTube API to fetch data, providing a vast library of videos at your fingertips.
 
 ## 💻 Built with
 
 Explore the technology stack behind the scenes:
 
-- **Front-End Framework**: React
-- **State Management**: Redux Toolkit
-- **Routing**: React Router DOM
-- **Styling**: Tailwind CSS
-- **UI Icons**: React Icons
-- **User Interface Components**: Prop-types
-- **Loading Animation**: React Spinners
-- **Notification System**: React Toastify
-- **Custom Scrollbar**: Tailwind Scrollbar Hide
-- **Development Server**: Vite
-- **Linting**: ESLint
+-   **Front-End Framework**: React
+-   **State Management**: Redux Toolkit
+-   **Real-time Communication**: Socket.IO
+-   **Routing**: React Router DOM
+-   **Styling**: Tailwind CSS
+-   **UI Icons**: React Icons
+-   **User Interface Components**: Prop-types
+-   **Loading Animation**: React Spinners
+-   **Notification System**: React Toastify
+-   **Custom Scrollbar**: Tailwind Scrollbar Hide
+-   **Development Server**: Vite
+-   **Linting**: ESLint
 
-Thank you for visiting and exploring ReactTubeClone! Excited to have you on this journey of video discovery and innovation. 🙌
+Thank you for visiting and exploring ReactTube! Join us on this exciting journey of video discovery and innovation. 🚀
