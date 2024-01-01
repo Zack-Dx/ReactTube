@@ -11,11 +11,11 @@ const chatSlice = createSlice({
     reducers: {
         setActiveVideoId: (state, action) => {
             state.activeVideo.videoId = action.payload;
+            state.activeVideo.messages = [];
         },
         setActiveVideoMessages: (state, action) => {
             state.activeVideo.messages = action.payload;
         },
-
         setIncomingVideoMessage: (state, action) => {
             const { videoId, message } = action.payload;
 

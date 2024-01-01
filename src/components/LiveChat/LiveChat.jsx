@@ -9,7 +9,7 @@ export default function LiveChat() {
 
     return (
         <section className="lg:col-span-4 col-span-12 rounded-lg h-[500px] border">
-            <div className="p-4 border-b my-1 ">
+            <div className="py-1 border-b my-1 ">
                 <img
                     className="h-8 w-fit mx-auto"
                     src={
