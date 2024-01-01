@@ -17,10 +17,18 @@ const chatSlice = createSlice({
         },
 
         setIncomingVideoMessage: (state, action) => {
-            state.activeVideo.messages = [
-                action.payload,
-                ...state.activeVideo.messages,
-            ];
+            const { videoId, message } = action.payload;
+
+            if (videoId === state.activeVideo.videoId) {
+                if (state.activeVideo.messages.length >= 15) {
+                    state.activeVideo.messages.pop();
+                }
+
+                state.activeVideo.messages = [
+                    message,
+                    ...state.activeVideo.messages,
+                ];
+            }
         },
     },
 });

@@ -5,9 +5,11 @@ import { setIncomingVideoMessage } from "../../store/slices/chatSlice";
 import socket from "../../socket/socket";
 
 export default function LiveUserInput() {
+    const MAX_MESSAGE_LENGTH = 100;
     const videoId = useSelector((store) => store.liveChat.activeVideo.videoId);
-    const inputRef = useRef(null);
     const [message, setMessage] = useState("");
+    const inputRef = useRef(null);
+    const remainingCharacters = MAX_MESSAGE_LENGTH - message.length;
     const dispatch = useDispatch();
     const isDisabled = message === "";
 
@@ -27,8 +29,8 @@ export default function LiveUserInput() {
     };
 
     const handleNewMessage = useCallback(
-        (newMessage) => {
-            dispatch(setIncomingVideoMessage(newMessage));
+        (data) => {
+            dispatch(setIncomingVideoMessage(data));
         },
         [dispatch]
     );
@@ -45,7 +47,7 @@ export default function LiveUserInput() {
         <>
             <form
                 onSubmit={sendLiveMessage}
-                className="flex h-full justify-center"
+                className="flex h-full justify-center items-center"
             >
                 <input
                     ref={inputRef}
@@ -54,14 +56,18 @@ export default function LiveUserInput() {
                     placeholder="Enter your message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    maxLength={MAX_MESSAGE_LENGTH}
                 />
+                <div className="text-xs text-gray-500">
+                    {remainingCharacters}/{MAX_MESSAGE_LENGTH}
+                </div>
                 <button
                     type="submit"
                     disabled={isDisabled}
                     className="cursor-pointer"
                 >
                     <AiOutlineSend
-                        className={`text-xl ${
+                        className={`text-4xl px-2  ${
                             isDisabled ? "text-gray-300" : null
                         }`}
                     />
