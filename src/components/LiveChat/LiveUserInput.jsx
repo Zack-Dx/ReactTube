@@ -9,10 +9,10 @@ const { NEW_MESSAGE } = ACTIONS;
 
 export default function LiveUserInput() {
     const dispatch = useDispatch();
+    const [message, setMessage] = useState("");
     const inputRef = useRef(null);
     const MAX_MESSAGE_LENGTH = 100;
     const isDisabled = message === "";
-    const [message, setMessage] = useState("");
     const remainingCharacters = MAX_MESSAGE_LENGTH - message.length;
     const videoId = useSelector((store) => store.liveChat.activeVideo.videoId);
 
