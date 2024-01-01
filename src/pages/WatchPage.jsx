@@ -7,20 +7,23 @@ import {
     setActiveVideoId,
     setActiveVideoMessages,
 } from "../store/slices/chatSlice";
-import LiveChat from "../components/LiveChat/LiveChat";
-import CommentContainer from "../components/Comment/CommentContainer";
+import { ACTIONS } from "../socket/actions";
 import socket from "../socket/socket";
+import CommentContainer from "../components/Comment/CommentContainer";
+import LiveChat from "../components/LiveChat/LiveChat";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 const YOUTUBE_COMMENT_THREAD_API = import.meta.env
     .VITE_YOUTUBE_COMMENT_THREAD_API;
 
+const { FETCH_VIDEO_MESSAGES, RECEIVED_VIDEO_MESSAGES } = ACTIONS;
+
 export default function WatchPage() {
-    const [searchParams] = useSearchParams();
-    const [comments, setComments] = useState([]);
-    const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
-    const videoId = searchParams.get("v");
     const dispatch = useDispatch();
+    const [comments, setComments] = useState([]);
+    const [searchParams] = useSearchParams();
+    const videoId = searchParams.get("v");
+    const isSideBarOpen = useSelector((store) => store.app.isSideBarVisible);
 
     // Function to fetch Youtube Comments
     const fetchComments = async () => {
@@ -50,13 +53,13 @@ export default function WatchPage() {
     useEffect(() => {
         dispatch(closeSideBarDisplay()); // Closing the Sidebar onload.
         dispatch(setActiveVideoId(videoId));
-        socket.emit("fetch-video-messages", videoId);
+        socket.emit(FETCH_VIDEO_MESSAGES, videoId);
     }, [videoId, dispatch]);
 
     useEffect(() => {
-        socket.on("received-video-messages", handleInitialVideoMessages);
+        socket.on(RECEIVED_VIDEO_MESSAGES, handleInitialVideoMessages);
         () => {
-            socket.off("received-video-messages", handleInitialVideoMessages);
+            socket.off(RECEIVED_VIDEO_MESSAGES, handleInitialVideoMessages);
         };
     }, [handleInitialVideoMessages]);
 

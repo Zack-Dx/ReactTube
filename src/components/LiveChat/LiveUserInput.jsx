@@ -2,21 +2,24 @@ import { useCallback, useRef, useEffect, useState } from "react";
 import { AiOutlineSend } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { setIncomingVideoMessage } from "../../store/slices/chatSlice";
+import { ACTIONS } from "../../socket/actions";
 import socket from "../../socket/socket";
 
+const { NEW_MESSAGE } = ACTIONS;
+
 export default function LiveUserInput() {
-    const MAX_MESSAGE_LENGTH = 100;
-    const videoId = useSelector((store) => store.liveChat.activeVideo.videoId);
-    const [message, setMessage] = useState("");
-    const inputRef = useRef(null);
-    const remainingCharacters = MAX_MESSAGE_LENGTH - message.length;
     const dispatch = useDispatch();
+    const inputRef = useRef(null);
+    const MAX_MESSAGE_LENGTH = 100;
     const isDisabled = message === "";
+    const [message, setMessage] = useState("");
+    const remainingCharacters = MAX_MESSAGE_LENGTH - message.length;
+    const videoId = useSelector((store) => store.liveChat.activeVideo.videoId);
 
     // Function to handle the Live user message
-    const sendLiveMessage = (event) => {
+    const handleSendLiveMessage = (event) => {
         event.preventDefault();
-        socket.emit("new-message", {
+        socket.emit(NEW_MESSAGE, {
             videoId,
             message: {
                 username: "User",
@@ -28,7 +31,7 @@ export default function LiveUserInput() {
         setMessage("");
     };
 
-    const handleNewMessage = useCallback(
+    const handleIncomingNewMessage = useCallback(
         (data) => {
             dispatch(setIncomingVideoMessage(data));
         },
@@ -36,17 +39,17 @@ export default function LiveUserInput() {
     );
 
     useEffect(() => {
-        socket.on("new-message", handleNewMessage);
+        socket.on(NEW_MESSAGE, handleIncomingNewMessage);
 
         return () => {
-            socket.off("new-message", handleNewMessage);
+            socket.off(NEW_MESSAGE, handleIncomingNewMessage);
         };
-    }, [handleNewMessage]);
+    }, [handleIncomingNewMessage]);
 
     return (
         <>
             <form
-                onSubmit={sendLiveMessage}
+                onSubmit={handleSendLiveMessage}
                 className="flex h-full justify-center items-center"
             >
                 <input
