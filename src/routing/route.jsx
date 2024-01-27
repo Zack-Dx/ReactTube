@@ -6,28 +6,28 @@ import Body from "../layout/Body";
 
 // Router Setup
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Body />,
-    children: [
-      {
+    {
         path: "/",
-        element: <MainContainer />,
-      },
-      {
-        path: "/watch",
-        element: <LazyWatchPage />,
-      },
-      {
-        path: "/results",
-        element: <LazySearchPage />,
-      },
-      {
-        path: "/*",
-        element: <Error />,
-      },
-    ],
-  },
+        element: <Body />,
+        children: [
+            {
+                path: "/",
+                element: <MainContainer />,
+            },
+            {
+                path: "/watch",
+                element: <LazyWatchPage />,
+            },
+            {
+                path: "/results",
+                element: <LazySearchPage />,
+            },
+            {
+                path: "/*",
+                element: <Error />,
+            },
+        ],
+    },
 ]);
 
 export default router;
