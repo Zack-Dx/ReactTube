@@ -149,7 +149,10 @@ export default function Navbar() {
                         (loading ? (
                             <NavSearchLoader Loader={PropagateLoader} />
                         ) : (
-                            <div className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3">
+                            <div
+                                data-testid="search-suggestions"
+                                className="absolute bg-white rounded-md w-[430px] h-fit overflow-y-auto top-16 -left-16 z-40 py-3 text-base font-semibold space-y-3"
+                            >
                                 <ul>
                                     {searchSuggestions?.map((query) => (
                                         <Link
@@ -164,7 +167,10 @@ export default function Navbar() {
                                             }}
                                             to={`/results/?keyword=${query}`}
                                         >
-                                            <li className="px-3 py-2 hover:bg-gray-100 cursor-pointer">
+                                            <li
+                                                data-testid="query-suggestion"
+                                                className="px-3 py-2 hover:bg-gray-100 cursor-pointer"
+                                            >
                                                 <div className="flex items-center gap-4">
                                                     <BsSearch className="text-sm" />
                                                     {query}

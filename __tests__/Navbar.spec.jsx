@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
+import { vi } from "vitest";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "../src/store/store";
@@ -13,6 +14,14 @@ describe("Navbar Component", () => {
                 </BrowserRouter>
             </Provider>
         );
+    });
+
+    beforeEach(() => {
+        global.fetch = vi.fn();
+    });
+
+    afterEach(() => {
+        global.fetch.mockRestore();
     });
 
     describe("Hamburger Icon", () => {
@@ -59,6 +68,12 @@ describe("Navbar Component", () => {
             expect(submitButton).toBeInTheDocument();
         });
 
+        it("should show loader after hitting search button", async () => {
+            const searchInput = screen.getByTestId("search-input");
+            fireEvent.change(searchInput, { target: { value: "javascript" } });
+            screen.getByTestId("loader");
+        });
+
         it("should navigate to results page after search", () => {
             const submitButton = screen.getByTestId("search-button");
             const searchInput = screen.getByTestId("search-input");
@@ -66,6 +81,28 @@ describe("Navbar Component", () => {
             fireEvent.click(submitButton);
             expect(window.location.pathname).toBe("/results/");
             expect(window.location.search).toBe("?keyword=javascript");
+            history.back();
+        });
+
+        it("should show suggestions after input change on search", async () => {
+            const searchInput = screen.getByTestId("search-input");
+            fireEvent.change(searchInput, { target: { value: "javascript" } });
+
+            global.fetch.mockResolvedValueOnce({
+                json: () => Promise.resolve(["", ["java"]]),
+                ok: true,
+            });
+
+            await waitFor(async () => {
+                screen.getByTestId("search-suggestions");
+            });
+            const loaderElement = screen.queryByTestId("loader");
+            expect(loaderElement).toBe(null);
+            const suggestion = screen.getByTestId("query-suggestion");
+            fireEvent.click(suggestion);
+            expect(window.location.pathname).toBe("/results/");
+            expect(window.location.search).toBe("?keyword=java");
+            history.back();
         });
     });
 
